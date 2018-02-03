@@ -1,10 +1,7 @@
 package edu.ncsu.csc326.coffeemaker;
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> c7ca5d0596b626a92c481630efe87d1dde8caf7d
 import edu.ncsu.csc326.coffeemaker.exceptions.RecipeException;
 import junit.framework.TestCase;
 
@@ -62,14 +59,6 @@ public class RecipeTest extends TestCase {
     	assertEquals("Price is 0 ", 0, amtChocolate);
     }
     
-    public void testtoString() {
-    	empty = "";
-    	assertEquals(Rec.toString(),empty);
-    }
-    
-    public void testHashcode_001() {
-    	assertTrue(Rec.hashCode() == Rec2.hashCode());
-    }
     
     public void testHashcode_002() {
     	Rec.setName("a");
@@ -181,7 +170,6 @@ public class RecipeTest extends TestCase {
     	catch(RecipeException success) {    		
     	}
     }
-<<<<<<< HEAD
     public void testtoString() {
     	empty = "";
     	assertEquals(Rec.toString(),empty);
@@ -190,7 +178,6 @@ public class RecipeTest extends TestCase {
     	assertTrue(Rec.hashCode() == Rec2.hashCode());
     }
     
-=======
     public void testsetAmtSugarDec(){
     	try {
     		Rec.setAmtSugar("1.3");
@@ -199,7 +186,6 @@ public class RecipeTest extends TestCase {
     	catch(RecipeException success) {    		
     	}
     }
->>>>>>> c7ca5d0596b626a92c481630efe87d1dde8caf7d
     public void testsetnameActual() {
     	name = "Bob";
     	Rec.setName("Bob");
@@ -238,8 +224,6 @@ public class RecipeTest extends TestCase {
     	}
     	catch(RecipeException success) {    		
     	}
-<<<<<<< HEAD
-=======
     }
     public void testsetPriceDec(){
     	try {
@@ -248,6 +232,5 @@ public class RecipeTest extends TestCase {
     	}
     	catch(RecipeException success) {    		
     	}
->>>>>>> c7ca5d0596b626a92c481630efe87d1dde8caf7d
     }
 }
