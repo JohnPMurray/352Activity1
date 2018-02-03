@@ -60,7 +60,13 @@ public class Inventory {
     		throw new InventoryException("Units of chocolate must be a positive integer");
     	}
 		if (amtChocolate >= 0) {
-			Inventory.chocolate += amtChocolate;
+			amtChocolate += Inventory.chocolate;
+			if(amtChocolate>=0) {
+				Inventory.chocolate = amtChocolate;
+			}
+			else {
+				throw new InventoryException("Units of chocolate must be a positive integer");
+			}
 		} else {
 			throw new InventoryException("Units of chocolate must be a positive integer");
 		}
@@ -100,7 +106,13 @@ public class Inventory {
     		throw new InventoryException("Units of coffee must be a positive integer");
     	}
 		if (amtCoffee >= 0) {
-			Inventory.coffee += amtCoffee;
+			amtCoffee += Inventory.coffee;
+			if(amtCoffee>=0) {
+				Inventory.coffee = amtCoffee;
+			}
+			else {
+				throw new InventoryException("Units of coffee must be a positive integer");
+			}
 		} else {
 			throw new InventoryException("Units of coffee must be a positive integer");
 		}
@@ -140,7 +152,13 @@ public class Inventory {
     		throw new InventoryException("Units of milk must be a positive integer");
     	}
 		if (amtMilk >= 0) {
-			Inventory.milk += amtMilk;
+			amtMilk += Inventory.milk;
+			if(amtMilk>=0) {
+				Inventory.milk = amtMilk;
+			}
+			else {
+				throw new InventoryException("Units of milk must be a positive integer");
+			}
 		} else {
 			throw new InventoryException("Units of milk must be a positive integer");
 		}
@@ -180,7 +198,13 @@ public class Inventory {
     		throw new InventoryException("Units of sugar must be a positive integer");
     	}
 		if (amtSugar >= 0) {
-			Inventory.sugar += amtSugar;
+			amtSugar += Inventory.sugar;
+			if(amtSugar>=0) {
+				Inventory.sugar = amtSugar;
+			}
+			else {
+				throw new InventoryException("Units of s must be a positive integer");
+			}
 		} else {
 			throw new InventoryException("Units of sugar must be a positive integer");
 		}

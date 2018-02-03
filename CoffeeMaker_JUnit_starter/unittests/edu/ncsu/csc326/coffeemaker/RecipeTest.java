@@ -1,7 +1,6 @@
 package edu.ncsu.csc326.coffeemaker;
 
 
-import org.junit.Assert;
 
 import edu.ncsu.csc326.coffeemaker.exceptions.RecipeException;
 import junit.framework.TestCase;
@@ -143,15 +142,13 @@ public class RecipeTest extends TestCase {
     	catch(RecipeException success) {    		
     	}
     }
-<<<<<<< HEAD
     public void testtoString() {
     	empty = "";
     	assertEquals(Rec.toString(),empty);
     }
     public void testHashcode_001() {
     	assertTrue(Rec.hashCode() == Rec2.hashCode());
-=======
-    
+    }
     public void testsetnameActual() {
     	name = "Bob";
     	Rec.setName("Bob");
@@ -189,6 +186,5 @@ public class RecipeTest extends TestCase {
     	}
     	catch(RecipeException success) {    		
     	}
->>>>>>> branch 'master' of https://github.com/JohnPMurray/352Activity1.git
     }
 }
