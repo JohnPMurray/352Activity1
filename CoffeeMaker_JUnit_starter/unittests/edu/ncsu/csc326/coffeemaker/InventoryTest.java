@@ -9,14 +9,17 @@ public class InventoryTest extends TestCase {
     private int milk;
     private int sugar;
     private int chocolate;
-    Inventory inv = new Inventory();
-    Recipe Rec = new Recipe();
+    Inventory inv;
+    Recipe Rec;
     
     protected void setUp() {
+    	Rec = new Recipe();
+    	inv = new Inventory();
     	this.coffee = inv.getCoffee();
-    	this.milk = inv.getMilk();
+    	this.milk = 15;
     	this.sugar = inv.getSugar();
     	this.chocolate = 15;
+    	
     	
     }
 	
@@ -25,88 +28,184 @@ public class InventoryTest extends TestCase {
     	this.milk = 0;
     	this.sugar = 0;
     	this.chocolate = 0; 
-    	//inv = new Inventory();
+    	Rec = null;
+    	inv = null;
     }
     
-    public void testintialRecipe() {
-    	inv.setChocolate(0);
-    	
-    	assertEquals("Chocolate is 0 ", 0, inv.getChocolate());
+
+    
+    public void testsetChocolatePos() {
+    	inv.setChocolate(0);	
+    	assertEquals("Chocolate is not 0 ", 0, inv.getChocolate());
+    }
+
+    public void testsetChocolateNeg() {
     	inv.setChocolate(-1);
-    	assertEquals("Chocolate is not negative ", 0, inv.getChocolate());
+    	assertEquals("Chocolate is negative ", 15, inv.getChocolate());
     }
     
-    public void testsetChocolate() {
-    	inv.setChocolate(0);
-    	
-    	assertEquals("Chocolate is 0 ", 0, inv.getChocolate());
-    	inv.setChocolate(1);
-    	assertEquals("Chocolate is 1 ", 1, inv.getChocolate());
-    	inv.setChocolate(-1);
-    	assertEquals("Chocolate is still 1 ", 1, inv.getChocolate());
-    }
-    
-    public void testsetCoffee() {
+    public void testsetCoffeePos() {
     	inv.setCoffee(0);   	
-    	assertEquals("Coffee is 0 ", 0, inv.getCoffee());
-    	inv.setCoffee(1);
-    	assertEquals("Coffee is added ", 1, inv.getCoffee());
-    	inv.setCoffee(-1);
-    	assertEquals("Negative coffee is not added ", 1, inv.getCoffee());
+    	assertEquals("Coffee is not 0 ", 0, inv.getCoffee());
     }
     
-    public void testsetMilk() {
+    public void testsetCoffeeNeg() {
+    	inv.setCoffee(-1);
+    	assertEquals("Coffee is negative ", 15, inv.getCoffee());
+    }
+    
+    public void testsetMilkPos() {
     	inv.setMilk(0);   	
-    	assertEquals("Milk is 0 ", 0, inv.getMilk());
-    	inv.setMilk(1);
-    	assertEquals("Milk is added ", 1, inv.getMilk());
+    	assertEquals("Milk is not 0 ", 0, inv.getMilk());
+    }
+    
+    public void testsetMilkNeg() {
      	inv.setMilk(-1);
-    	assertEquals("Negative milk is not added ", 1, inv.getMilk());
+    	assertEquals("Milk is negative ", 15, inv.getMilk());
+    }
+    
+    public void testsetSugarPos() {
+    	inv.setSugar(0);   	
+    	assertEquals("Sugar is not 0 ", 0, inv.getSugar());
     }
     
     public void testsetSugar() {
-    	inv.setSugar(0);   	
-    	assertEquals("Sugar is 0 ", 0, inv.getSugar());
-    	inv.setSugar(1);
-    	assertEquals("Sugar is added ", 1, inv.getSugar());
     	inv.setSugar(-1);
-    	assertEquals("Negative sugar is not added ", 1, inv.getSugar());
+    	assertEquals("Sugar is negative ", 15, inv.getSugar());
     }
     
-    public void testaddChocolate() throws InventoryException {
-    	inv.addChocolate("0");
+    public void testaddChocolateZ() {
+    	try {
+			inv.addChocolate("0");
+		} catch (InventoryException e) {
+			// TODO Auto-generated catch block
+			
+		}
     	assertEquals("Chocolate is 15 ", 15, inv.getChocolate());
-    	inv.addChocolate("-1");
-    	assertEquals("Negative chocolate is not added ", 15, chocolate);
-    	inv.addChocolate("1");
-    	assertEquals("Chocolate is added ", 16, chocolate);
+    	
     }
     
-    public void testaddCoffee() throws InventoryException {
-    	inv.addCoffee("0");   	
-    	assertEquals("Coffee is 15 ", 15, inv.getCoffee());
-    	inv.addCoffee("-1");
-    	assertEquals("Negative coffee is not added ", 15, inv.getCoffee());
-    	inv.addCoffee("1");
-    	assertEquals("Coffee is added ", 16, inv.getCoffee());
+    public void testaddChocolateNeg() {
+
+    	try {
+			inv.addChocolate("-1");
+		} catch (InventoryException e) {
+			// TODO Auto-generated catch block
+			
+		}
+    	assertEquals("Negative chocolate is added ", 15, inv.getChocolate());
+    	
     }
     
-    public void testaddMilk() throws InventoryException {
-    	inv.addMilk("0");   	
-    	assertEquals("Milk is 15 ", 15, milk);
-    	inv.addMilk("-1");
-    	assertEquals("Negative milk is not added ", 15, milk);
-    	inv.addMilk("1");
-    	assertEquals("Milk is added ", 16, milk);
+    public void testaddChocolatePos() {
+    	try {
+			inv.addChocolate("1");
+		} catch (InventoryException e) {
+			// TODO Auto-generated catch block
+			
+		}
+    	assertEquals("Chocolate is not added ", 16, inv.getChocolate());
     }
     
-    public void testaddSugar() throws InventoryException {
-    	inv.addSugar("0");   	
-    	assertEquals("Sugar is 15 ", 15, sugar);
-    	inv.addSugar("-1");
-    	assertEquals("Negative sugar is not added ", 15, sugar);
-    	inv.addSugar("1");
-    	assertEquals("Sugar is added ", 16, sugar);
+    public void testaddCoffeeZ() {
+    	try {
+			inv.addCoffee("0");
+		} catch (InventoryException e) {
+			// TODO Auto-generated catch block
+			
+		}   	
+    	assertEquals("Coffee is not 15 ", 15, inv.getCoffee());
+    	
+    }
+    
+    public void testaddCoffeeNeg() {
+
+    	try {
+			inv.addCoffee("-1");
+		} catch (InventoryException e) {
+			// TODO Auto-generated catch block
+			
+		}
+    	assertEquals("Negative coffee is added ", 15, inv.getCoffee());
+    	
+    }
+    
+    public void testaddCoffeePos() {
+
+    	try {
+			inv.addCoffee("1");
+		} catch (InventoryException e) {
+			// TODO Auto-generated catch block
+			
+		}
+    	assertEquals("Coffee is not added ", 16, inv.getCoffee());
+    }
+    
+    public void testaddMilkZ() {
+    	try {
+			inv.addMilk("0");
+		} catch (InventoryException e) {
+			// TODO Auto-generated catch block
+			
+		}   	
+    	assertEquals("Milk is not 15 ", 15, inv.getMilk());
+    	
+    }
+    
+    public void testaddMilkNeg() {
+
+    	try {
+			inv.addMilk("-1");
+		} catch (InventoryException e) {
+			// TODO Auto-generated catch block
+			
+		}
+    	assertEquals("Negative Milk is added ", 15, inv.getMilk());
+    	
+    }
+    
+    public void testaddMilkPos() {
+
+    	try {
+			inv.addMilk("1");
+		} catch (InventoryException e) {
+			// TODO Auto-generated catch block
+			
+		}
+    	assertEquals("Milk is not added ", 16, inv.getMilk());
+    }
+    
+    public void testaddSugarZ()  {
+    	try {
+			inv.addSugar("0");
+		} catch (InventoryException e) {
+			// TODO Auto-generated catch block
+		}   	
+    	assertEquals("Sugar is not 15 ", 15, inv.getSugar());
+    	
+    }
+    
+    public void testaddSugarNeg()  {
+
+    	try {
+			inv.addSugar("-1");
+		} catch (InventoryException e) {
+			// TODO Auto-generated catch block
+			
+		}
+    	assertEquals("Negative sugar is added ", 15, inv.getSugar());
+    	
+    }
+    
+    public void testaddSugarPos()  {
+
+    	try {
+			inv.addSugar("1");
+		} catch (InventoryException e) {
+			// TODO Auto-generated catch block
+			
+		}
+    	assertEquals("Sugar is not added ", 16, inv.getSugar());
     }
     
 
