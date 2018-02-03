@@ -11,7 +11,7 @@ public class InventoryTest extends TestCase {
     private int sugar;
     private int chocolate;
     Inventory inv = new Inventory();
-    Recipe Rec = new Recipe();
+    Recipe Rec;
     
     protected void setUp() {
     	Rec = new Recipe();
@@ -28,7 +28,6 @@ public class InventoryTest extends TestCase {
     	this.milk = 0;
     	this.sugar = 0;
     	this.chocolate = 0; 
-    	//inv = new Inventory();
     	Rec = null;
     	inv = null;
     }
