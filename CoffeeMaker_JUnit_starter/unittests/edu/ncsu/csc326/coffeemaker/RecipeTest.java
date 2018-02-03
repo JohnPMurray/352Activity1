@@ -236,15 +236,34 @@ public class RecipeTest extends TestCase {
     public void testequals_001() {
     	assertTrue(Rec.equals(Rec2));
     }
-    
+   
     public void testequals_002() {
     	Rec.setName(null);
     	Rec2.setName("Name");
-    	assertTrue(Rec.equals(Rec2));
+    	assertFalse(Rec.equals(Rec2));
    }
   
     public void testequals_003() {
     	Rec.setName("Name");
-    	assertTrue(Rec.equals(Rec2));
+    	assertFalse(Rec.equals(Rec2));
     }
+    
+    public void testequals_004() {
+    	assertTrue(Rec.equals(Rec));
+   }
+    public void testequals_005() {
+    	assertFalse(Rec.equals(null));
+   }
+    
+    public void testequals_006() {
+    	assertFalse(Rec.equals("text"));
+    }
+    
+    public void testequals_007() {
+    	Rec.setName("a");
+    	Rec2.setName("b");
+    	assertFalse(Rec.equals(2));
+    }
+ 
+    
 }
