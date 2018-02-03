@@ -28,7 +28,6 @@ public class InventoryTest extends TestCase {
     	this.milk = 0;
     	this.sugar = 0;
     	this.chocolate = 0; 
-    	//inv = new Inventory();
     	Rec = null;
     	inv = null;
     }
@@ -146,14 +145,27 @@ public class InventoryTest extends TestCase {
     	assertEquals("Chocolate is not added ", 16, inv.getChocolate());
     }
     
-    public void testaddCoffeeSymb() {
+    public void testaddChocolateMax() {
     	try {
-			inv.addCoffee("a");
+    		inv.setChocolate(Integer.MAX_VALUE);
+			inv.addChocolate("1");
+			fail("Should not throw inventory exception");
+    	} catch (InventoryException e) {
+			
+		}
+    	assertEquals("Chocolate should not overflow", Integer.MAX_VALUE, inv.getChocolate());
+    }
+    
+    public void testaddCoffeeMax() {
+    	try {
+    		inv.setCoffee(Integer.MAX_VALUE);
+			inv.addCoffee("1");
 			fail("Should throw inventory exception");
 		} catch (InventoryException e) {
-	    		assertEquals("Coffee is not letter ", 15, inv.getCoffee());
+			
 			
 		}   	
+    	assertEquals("Coffee should not overflow", Integer.MAX_VALUE, inv.getCoffee());
     	
     }
     
@@ -166,6 +178,40 @@ public class InventoryTest extends TestCase {
 			
 		}   	
     	
+    }
+    
+    public void testaddMilkMax() {
+    	try {
+    		inv.setMilk(Integer.MAX_VALUE);
+			inv.addMilk("1");
+			fail("Should not throw inventory exception");
+		} catch (InventoryException e) {
+			
+			
+		}   	
+    	assertEquals("Milk should not overflow", Integer.MAX_VALUE, inv.getMilk());
+    	
+    }
+    
+    public void testaddSugarMax()  {
+    	try {
+    		inv.setSugar(Integer.MAX_VALUE);
+			inv.addSugar("1");
+			fail("Should not throw inventory exception");
+		} catch (InventoryException e) {
+			
+		}   	
+    	assertEquals("Sugar should not overflow", Integer.MAX_VALUE, inv.getSugar());
+    	
+    }
+    
+    public void testaddCoffeeSymb() {
+    	try {
+			inv.addCoffee("a");
+			fail("Should throw inventory exception");
+		} catch (InventoryException e) {
+	    		assertEquals("Coffee is not letter ", 15, inv.getCoffee());
+		}   	  	
     }
     
     public void testaddCoffeeZ() {
@@ -315,12 +361,6 @@ public class InventoryTest extends TestCase {
     }
     
 
- /*   
-    public void testenoughIngredience() {
-    	inv.enoughIngredients(r);
-    	
-    }
-*/
     public void testUseNothing() throws RecipeException{
 		assertTrue(inv.useIngredients(Rec));
     }

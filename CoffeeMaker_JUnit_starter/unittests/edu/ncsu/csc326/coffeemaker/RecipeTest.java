@@ -177,7 +177,7 @@ public class RecipeTest extends TestCase {
     public void testHashcode_001() {
     	assertTrue(Rec.hashCode() == Rec2.hashCode());
     }
-    
+
     public void testsetAmtSugarDec(){
     	try {
     		Rec.setAmtSugar("1.3");
