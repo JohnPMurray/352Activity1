@@ -89,7 +89,7 @@ public class InventoryTest extends TestCase {
     
     public void testsetSugarNeg() {
     	inv.setSugar(-1);
-    	assertEquals("Negative sugar is not added ", 1, inv.getSugar());
+    	assertEquals("Negative sugar is not added ", 15, inv.getSugar());
     }
     
     public void testaddChocolateSymb() {
