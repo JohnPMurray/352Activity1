@@ -22,7 +22,7 @@ public class Recipe {
     	this.amtCoffee = 0;
     	this.amtMilk = 0;
     	this.amtSugar = 0;
-    	this.amtChocolate = 0;
+    	this.amtChocolate = 0;    	
     }
     
     /**
