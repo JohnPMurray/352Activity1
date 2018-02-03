@@ -125,4 +125,21 @@ public class RecipeTest extends TestCase {
     	}
     }
     
+    public void testsetnameActual() {
+    	name = "Bob";
+    	Rec.setName("Bob");
+    	assertEquals(Rec.getName(),"Bob");
+    }
+    
+    public void testnameEmpty() {
+    	name = "";
+    	Rec.setName("");
+    	assertEquals(Rec.getName(),"");
+    }
+    
+    public void testnameNull() {
+    	name = null;
+    	Rec.setName(name);
+    	assertEquals(Rec.getName(),"");
+    }
 }
