@@ -259,6 +259,20 @@ public class RecipeTest extends TestCase {
     	assertFalse(Rec.equals("text"));
     }
     
+    public void testequals_007() {
+    	Rec.setName("name");
+    	Rec2.setName("name");
+    	assertTrue(Rec.equals(Rec2));
+    }
+    
+    public void testequals_008() throws RecipeException {
+    	Rec.setName("name");
+    	Rec.setAmtSugar("1");
+    	Rec2.setName("name");
+    	assertTrue(Rec.equals(Rec2));
+    }
+    
+ 
 
  
     
