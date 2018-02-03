@@ -27,6 +27,10 @@ public class RecipeBook {
 		//Assume recipe doesn't exist in the array until 
 		//find out otherwise
 		boolean exists = false;
+		//make sure r is not null
+		if (r==null) {
+			return false;
+		}
 		//Check that recipe doesn't already exist in array
 		for (int i = 0; i < recipeArray.length; i++ ) {
 			if (r.equals(recipeArray[i])) {

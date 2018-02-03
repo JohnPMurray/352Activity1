@@ -100,6 +100,16 @@ public class InventoryTest extends TestCase {
 	    		assertEquals("Chocolate is 15 ", 15, inv.getChocolate());
 			
 		}
+    }
+        
+    	public void testaddChocolateNull() {
+        	try {
+    			inv.addChocolate(null);
+    			fail("Should throw inventory exception");
+    		} catch (InventoryException e) {
+    	    		assertEquals("Chocolate is 15 ", 15, inv.getChocolate());
+    			
+    		}
     	
     }
     
@@ -139,6 +149,17 @@ public class InventoryTest extends TestCase {
     public void testaddCoffeeSymb() {
     	try {
 			inv.addCoffee("a");
+			fail("Should throw inventory exception");
+		} catch (InventoryException e) {
+	    		assertEquals("Coffee is not letter ", 15, inv.getCoffee());
+			
+		}   	
+    	
+    }
+    
+    public void testaddCoffeeNull() {
+    	try {
+			inv.addCoffee(null);
 			fail("Should throw inventory exception");
 		} catch (InventoryException e) {
 	    		assertEquals("Coffee is not letter ", 15, inv.getCoffee());
@@ -193,6 +214,18 @@ public class InventoryTest extends TestCase {
     	
     }
     
+    public void testaddMilkNull() {
+    	try {
+			inv.addMilk(null);
+			fail("Should throw inventory exception");
+		} catch (InventoryException e) {
+			assertEquals("Milk is not letter ", 15, inv.getMilk());
+			
+		}   	
+    	
+    	
+    }
+    
     public void testaddMilkZ() {
     	try {
 			inv.addMilk("0");
@@ -230,6 +263,16 @@ public class InventoryTest extends TestCase {
     public void testaddSugarSymb()  {
     	try {
 			inv.addSugar("a");
+			fail("Should throw inventory exception");
+		} catch (InventoryException e) {
+			assertEquals("Sugar is not letter ", 15, inv.getSugar());
+		}   	
+    	
+    }
+    
+    public void testaddSugarNull()  {
+    	try {
+			inv.addSugar(null);
 			fail("Should throw inventory exception");
 		} catch (InventoryException e) {
 			assertEquals("Sugar is not letter ", 15, inv.getSugar());

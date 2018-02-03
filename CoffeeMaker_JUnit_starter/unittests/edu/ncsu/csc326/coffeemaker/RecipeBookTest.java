@@ -38,6 +38,11 @@ public class RecipeBookTest extends TestCase {
 		assertSame(recipe1, recipeBook.getRecipes()[0]);
 	}
 	
+	public void testAddNull() {
+		recipeBook.addRecipe(null);
+		assertSame(recipeBook.getRecipes()[0], null);
+	}
+	
 	public void testAddSameRecipe() {
 		recipeBook.addRecipe(recipe1);
 		recipeBook.addRecipe(recipe1);
@@ -82,7 +87,7 @@ public class RecipeBookTest extends TestCase {
 	
 	public void testDeleteNonExistantRecipe() {
 		recipeBook.deleteRecipe(0);
-		assertEquals(4, recipeBook.getRecipes().length);
+		assertSame(recipeBook.getRecipes()[0], null);
 	}
 	
 	public void testDeleteAboveBounds() {
@@ -117,6 +122,12 @@ public class RecipeBookTest extends TestCase {
 	public void testEditBelowBounds() {
 		recipeBook.addRecipe(recipe1);
 		recipeBook.editRecipe(-1, recipe1);
+		assertSame(recipe1, recipeBook.getRecipes()[0]);
+	}
+
+	public void testEditWithNull() {
+		recipeBook.addRecipe(recipe1);
+		recipeBook.editRecipe(0, null);
 		assertSame(recipe1, recipeBook.getRecipes()[0]);
 	}
 	
