@@ -176,9 +176,26 @@ public class Recipe {
 			return false;
 		final Recipe other = (Recipe) obj;
 		if (name == "" && other.name == "" ) {
-				return true;
-		} else if (!name.equals(other.name))
+			return true;
+		}
+		else if (this.price != (other.price)) {
 			return false;
+		}
+		else if (this.amtChocolate != (other.amtChocolate)) {
+			return false;
+		}
+		else if (this.amtCoffee != (other.amtCoffee)) {
+			return false;
+		}
+		else if (this.amtMilk != (other.amtMilk)) {
+			return false;
+		}
+		if (this.amtSugar != (other.amtSugar)) {
+			return false;
+		}
+		else if (!name.equals(other.name)) {
+			return false;
+		}
 		return true;
 	}
 
