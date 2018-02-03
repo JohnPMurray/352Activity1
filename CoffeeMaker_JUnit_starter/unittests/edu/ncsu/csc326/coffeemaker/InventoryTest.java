@@ -127,10 +127,10 @@ public class InventoryTest extends TestCase {
     		Rec.setAmtMilk("3");
     		Rec.setAmtSugar("4");
     		assertTrue(inv.useIngredients(Rec));
-    		assertEquals(chocolate - 1, inv.getChocolate());
-    		assertEquals(coffee - 2, inv.getCoffee());
-    		assertEquals(milk - 3, inv.getMilk());
-    		assertEquals(sugar - 4, inv.getSugar());
+    		assertSame(chocolate - 1, inv.getChocolate());
+    		assertSame(coffee - 2, inv.getCoffee());
+    		assertSame(milk - 3, inv.getMilk());
+    		assertSame(sugar - 4, inv.getSugar());
     }
     
     public void testUseTooMuchChocolate() throws RecipeException{
@@ -139,10 +139,10 @@ public class InventoryTest extends TestCase {
 		Rec.setAmtMilk("3");
 		Rec.setAmtSugar("4");
 		assertFalse(inv.useIngredients(Rec));
-		assertEquals(chocolate, inv.getChocolate());
-		assertEquals(coffee, inv.getCoffee());
-		assertEquals(milk, inv.getMilk());
-		assertEquals(sugar, inv.getSugar());
+		assertSame(chocolate, inv.getChocolate());
+		assertSame(coffee, inv.getCoffee());
+		assertSame(milk, inv.getMilk());
+		assertSame(sugar, inv.getSugar());
     }
     
     public void testUseTooMuchMilk() throws RecipeException{
@@ -151,10 +151,10 @@ public class InventoryTest extends TestCase {
 		Rec.setAmtMilk("16");
 		Rec.setAmtSugar("4");
 		assertFalse(inv.useIngredients(Rec));
-		assertEquals(chocolate, inv.getChocolate());
-		assertEquals(coffee, inv.getCoffee());
-		assertEquals(milk, inv.getMilk());
-		assertEquals(sugar, inv.getSugar());
+		assertSame(chocolate, inv.getChocolate());
+		assertSame(coffee, inv.getCoffee());
+		assertSame(milk, inv.getMilk());
+		assertSame(sugar, inv.getSugar());
     }
     
     public void testUseTooMuchCoffee() throws RecipeException{
@@ -163,10 +163,10 @@ public class InventoryTest extends TestCase {
 		Rec.setAmtMilk("3");
 		Rec.setAmtSugar("4");
 		assertFalse(inv.useIngredients(Rec));
-		assertEquals(chocolate, inv.getChocolate());
-		assertEquals(coffee, inv.getCoffee());
-		assertEquals(milk, inv.getMilk());
-		assertEquals(sugar, inv.getSugar());
+		assertSame(chocolate, inv.getChocolate());
+		assertSame(coffee, inv.getCoffee());
+		assertSame(milk, inv.getMilk());
+		assertSame(sugar, inv.getSugar());
     }
     
     public void testUseTooMuchSugar() throws RecipeException{
@@ -176,10 +176,18 @@ public class InventoryTest extends TestCase {
 		Rec.setAmtMilk("3");
 		Rec.setAmtSugar("16");
 		assertFalse(inv.useIngredients(Rec));
-		assertEquals(chocolate, inv.getChocolate());
-		assertEquals(coffee, inv.getCoffee());
-		assertEquals(milk, inv.getMilk());
-		assertEquals(sugar, inv.getSugar());
+		assertSame(chocolate, inv.getChocolate());
+		assertSame(coffee, inv.getCoffee());
+		assertSame(milk, inv.getMilk());
+		assertSame(sugar, inv.getSugar());
+    }
+    
+    public void testToString() {
+    		String strExpected = "Coffee: 15\n" + 
+    				"Milk: 15\n" + 
+    				"Sugar: 15\n" + 
+    				"Chocolate: 15\n";
+    		assertEquals(strExpected, inv.toString());
     }
 
 }
