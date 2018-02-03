@@ -142,4 +142,25 @@ public class RecipeTest extends TestCase {
     	Rec.setName(name);
     	assertEquals(Rec.getName(),"");
     }
+    
+    public void testsetPriceInterger() throws RecipeException {
+    	Rec.setPrice("1");
+    	assertEquals(Rec.getPrice(),1);
+    }
+    public void testsetPriceCharacter() {
+    	try {
+    		Rec.setPrice("a");
+    		fail("String must be a Number");
+    	}
+    	catch(RecipeException success) {    		
+    	}
+    }
+    public void testsetPriceNegative(){
+    	try {
+    		Rec.setPrice("-1");
+    		fail("String must be a Positive Number");
+    	}
+    	catch(RecipeException success) {    		
+    	}
+    }
 }
