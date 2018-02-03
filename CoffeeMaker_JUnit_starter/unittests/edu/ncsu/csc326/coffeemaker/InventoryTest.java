@@ -1,6 +1,7 @@
 package edu.ncsu.csc326.coffeemaker;
 
 import edu.ncsu.csc326.coffeemaker.exceptions.InventoryException;
+import edu.ncsu.csc326.coffeemaker.exceptions.RecipeException;
 import junit.framework.TestCase;
 
 public class InventoryTest extends TestCase {
@@ -18,7 +19,7 @@ public class InventoryTest extends TestCase {
     	this.coffee = inv.getCoffee();
     	this.milk = 15;
     	this.sugar = inv.getSugar();
-    	this.chocolate = 15;
+    	this.chocolate = inv.getChocolate();
     	
     	
     }
@@ -74,6 +75,17 @@ public class InventoryTest extends TestCase {
     	assertEquals("Sugar is negative ", 15, inv.getSugar());
     }
     
+    public void testaddChocolateSymb() {
+    	try {
+			inv.addChocolate("a");
+		} catch (InventoryException e) {
+			// TODO Auto-generated catch block
+			
+		}
+    	assertEquals("Chocolate is 15 ", 15, inv.getChocolate());
+    	
+    }
+    
     public void testaddChocolateZ() {
     	try {
 			inv.addChocolate("0");
@@ -105,6 +117,17 @@ public class InventoryTest extends TestCase {
 			
 		}
     	assertEquals("Chocolate is not added ", 16, inv.getChocolate());
+    }
+    
+    public void testaddCoffeeSymb() {
+    	try {
+			inv.addCoffee("a");
+		} catch (InventoryException e) {
+			// TODO Auto-generated catch block
+			
+		}   	
+    	assertEquals("Coffee is not letter ", 15, inv.getCoffee());
+    	
     }
     
     public void testaddCoffeeZ() {
@@ -141,6 +164,17 @@ public class InventoryTest extends TestCase {
     	assertEquals("Coffee is not added ", 16, inv.getCoffee());
     }
     
+    public void testaddMilkSymb() {
+    	try {
+			inv.addMilk("a");
+		} catch (InventoryException e) {
+			// TODO Auto-generated catch block
+			
+		}   	
+    	assertEquals("Milk is not letter ", 15, inv.getMilk());
+    	
+    }
+    
     public void testaddMilkZ() {
     	try {
 			inv.addMilk("0");
@@ -173,6 +207,16 @@ public class InventoryTest extends TestCase {
 			
 		}
     	assertEquals("Milk is not added ", 16, inv.getMilk());
+    }
+    
+    public void testaddSugarSymb()  {
+    	try {
+			inv.addSugar("a");
+		} catch (InventoryException e) {
+			// TODO Auto-generated catch block
+		}   	
+    	assertEquals("Sugar is not letter ", 15, inv.getSugar());
+    	
     }
     
     public void testaddSugarZ()  {
@@ -215,5 +259,73 @@ public class InventoryTest extends TestCase {
     	
     }
 */
+    public void testUseEnoughIngredients() throws RecipeException{
+    		Rec.setAmtChocolate("1");
+    		Rec.setAmtCoffee("2");
+    		Rec.setAmtMilk("3");
+    		Rec.setAmtSugar("4");
+    		assertTrue(inv.useIngredients(Rec));
+    		assertSame(chocolate - 1, inv.getChocolate());
+    		assertSame(coffee - 2, inv.getCoffee());
+    		assertSame(milk - 3, inv.getMilk());
+    		assertSame(sugar - 4, inv.getSugar());
+    }
+    
+    public void testUseTooMuchChocolate() throws RecipeException{
+		Rec.setAmtChocolate("16");
+		Rec.setAmtCoffee("2");
+		Rec.setAmtMilk("3");
+		Rec.setAmtSugar("4");
+		assertFalse(inv.useIngredients(Rec));
+		assertSame(chocolate, inv.getChocolate());
+		assertSame(coffee, inv.getCoffee());
+		assertSame(milk, inv.getMilk());
+		assertSame(sugar, inv.getSugar());
+    }
+    
+    public void testUseTooMuchMilk() throws RecipeException{
+		Rec.setAmtChocolate("1");
+		Rec.setAmtCoffee("2");
+		Rec.setAmtMilk("16");
+		Rec.setAmtSugar("4");
+		assertFalse(inv.useIngredients(Rec));
+		assertSame(chocolate, inv.getChocolate());
+		assertSame(coffee, inv.getCoffee());
+		assertSame(milk, inv.getMilk());
+		assertSame(sugar, inv.getSugar());
+    }
+    
+    public void testUseTooMuchCoffee() throws RecipeException{
+		Rec.setAmtChocolate("1");
+		Rec.setAmtCoffee("16");
+		Rec.setAmtMilk("3");
+		Rec.setAmtSugar("4");
+		assertFalse(inv.useIngredients(Rec));
+		assertSame(chocolate, inv.getChocolate());
+		assertSame(coffee, inv.getCoffee());
+		assertSame(milk, inv.getMilk());
+		assertSame(sugar, inv.getSugar());
+    }
+    
+    public void testUseTooMuchSugar() throws RecipeException{
+		Rec.setAmtChocolate("1");
+		Rec.setAmtChocolate("16");
+		Rec.setAmtCoffee("2");
+		Rec.setAmtMilk("3");
+		Rec.setAmtSugar("16");
+		assertFalse(inv.useIngredients(Rec));
+		assertSame(chocolate, inv.getChocolate());
+		assertSame(coffee, inv.getCoffee());
+		assertSame(milk, inv.getMilk());
+		assertSame(sugar, inv.getSugar());
+    }
+    
+    public void testToString() {
+    		String strExpected = "Coffee: 15\n" + 
+    				"Milk: 15\n" + 
+    				"Sugar: 15\n" + 
+    				"Chocolate: 15\n";
+    		assertEquals(strExpected, inv.toString());
+    }
 
 }
