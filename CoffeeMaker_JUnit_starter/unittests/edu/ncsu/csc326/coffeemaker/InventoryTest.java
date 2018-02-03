@@ -1,6 +1,7 @@
 package edu.ncsu.csc326.coffeemaker;
 
 import edu.ncsu.csc326.coffeemaker.exceptions.InventoryException;
+import edu.ncsu.csc326.coffeemaker.exceptions.RecipeException;
 import junit.framework.TestCase;
 
 public class InventoryTest extends TestCase {
@@ -13,10 +14,12 @@ public class InventoryTest extends TestCase {
     Recipe Rec = new Recipe();
     
     protected void setUp() {
+    	Rec = new Recipe();
+    	inv = new Inventory();
     	this.coffee = inv.getCoffee();
     	this.milk = inv.getMilk();
     	this.sugar = inv.getSugar();
-    	this.chocolate = 15;
+    	this.chocolate = inv.getChocolate();
     	
     }
 	
@@ -26,6 +29,8 @@ public class InventoryTest extends TestCase {
     	this.sugar = 0;
     	this.chocolate = 0; 
     	//inv = new Inventory();
+    	Rec = null;
+    	inv = null;
     }
     
     public void testintialRecipe() {
@@ -116,5 +121,65 @@ public class InventoryTest extends TestCase {
     	
     }
 */
+    public void testUseEnoughIngredients() throws RecipeException{
+    		Rec.setAmtChocolate("1");
+    		Rec.setAmtCoffee("2");
+    		Rec.setAmtMilk("3");
+    		Rec.setAmtSugar("4");
+    		assertTrue(inv.useIngredients(Rec));
+    		assertEquals(chocolate - 1, inv.getChocolate());
+    		assertEquals(coffee - 2, inv.getCoffee());
+    		assertEquals(milk - 3, inv.getMilk());
+    		assertEquals(sugar - 4, inv.getSugar());
+    }
+    
+    public void testUseTooMuchChocolate() throws RecipeException{
+		Rec.setAmtChocolate("16");
+		Rec.setAmtCoffee("2");
+		Rec.setAmtMilk("3");
+		Rec.setAmtSugar("4");
+		assertFalse(inv.useIngredients(Rec));
+		assertEquals(chocolate, inv.getChocolate());
+		assertEquals(coffee, inv.getCoffee());
+		assertEquals(milk, inv.getMilk());
+		assertEquals(sugar, inv.getSugar());
+    }
+    
+    public void testUseTooMuchMilk() throws RecipeException{
+		Rec.setAmtChocolate("1");
+		Rec.setAmtCoffee("2");
+		Rec.setAmtMilk("16");
+		Rec.setAmtSugar("4");
+		assertFalse(inv.useIngredients(Rec));
+		assertEquals(chocolate, inv.getChocolate());
+		assertEquals(coffee, inv.getCoffee());
+		assertEquals(milk, inv.getMilk());
+		assertEquals(sugar, inv.getSugar());
+    }
+    
+    public void testUseTooMuchCoffee() throws RecipeException{
+		Rec.setAmtChocolate("1");
+		Rec.setAmtCoffee("16");
+		Rec.setAmtMilk("3");
+		Rec.setAmtSugar("4");
+		assertFalse(inv.useIngredients(Rec));
+		assertEquals(chocolate, inv.getChocolate());
+		assertEquals(coffee, inv.getCoffee());
+		assertEquals(milk, inv.getMilk());
+		assertEquals(sugar, inv.getSugar());
+    }
+    
+    public void testUseTooMuchSugar() throws RecipeException{
+		Rec.setAmtChocolate("1");
+		Rec.setAmtChocolate("16");
+		Rec.setAmtCoffee("2");
+		Rec.setAmtMilk("3");
+		Rec.setAmtSugar("16");
+		assertFalse(inv.useIngredients(Rec));
+		assertEquals(chocolate, inv.getChocolate());
+		assertEquals(coffee, inv.getCoffee());
+		assertEquals(milk, inv.getMilk());
+		assertEquals(sugar, inv.getSugar());
+    }
 
 }
