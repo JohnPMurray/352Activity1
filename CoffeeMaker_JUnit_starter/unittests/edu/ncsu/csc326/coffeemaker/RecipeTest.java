@@ -233,4 +233,18 @@ public class RecipeTest extends TestCase {
     	catch(RecipeException success) {    		
     	}
     }
+    public void testequals_001() {
+    	assertTrue(Rec.equals(Rec2));
+    }
+    
+    public void testequals_002() {
+    	Rec.setName(null);
+    	Rec2.setName("Name");
+    	assertTrue(Rec.equals(Rec2));
+   }
+  
+    public void testequals_003() {
+    	Rec.setName("Name");
+    	assertTrue(Rec.equals(Rec2));
+    }
 }
