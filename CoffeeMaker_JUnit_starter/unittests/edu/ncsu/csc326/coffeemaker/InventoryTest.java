@@ -320,78 +320,118 @@ public class InventoryTest extends TestCase {
 
     public void testUseNothing() throws RecipeException{
 		assertTrue(inv.useIngredients(Rec));
-		assertSame(coffee, inv.getCoffee());
-		assertSame(milk, inv.getMilk());
+    }
+    
+    public void testUseNoSugar() throws RecipeException{
+    		inv.useIngredients(Rec);
 		assertSame(sugar, inv.getSugar());
-		assertSame(chocolate, inv.getChocolate());
-    }
-    public void testUseCoffee() throws RecipeException{
-    		Rec.setAmtCoffee("1");
-    		assertTrue(inv.useIngredients(Rec));
-    		assertSame(coffee - 1, inv.getCoffee());
     }
     
-    public void testUseMilk() throws RecipeException{
-		Rec.setAmtMilk("1");
-		assertTrue(inv.useIngredients(Rec));
-		assertSame(milk - 1, inv.getMilk());
-}
-    public void testUseSugar() throws RecipeException{
-		Rec.setAmtSugar("1");
-		assertTrue(inv.useIngredients(Rec));
-		assertSame(sugar - 1, inv.getSugar());
+    public void testUseNoChocolate() throws RecipeException{
+		inv.useIngredients(Rec);
+	assertSame(chocolate, inv.getChocolate());
 }
     
-    public void testUseChocolate() throws RecipeException{
-		Rec.setAmtChocolate("1");
-		assertTrue(inv.useIngredients(Rec));
-		assertSame(chocolate - 1, inv.getChocolate());
+    public void testUseNoCoffee() throws RecipeException{
+		inv.useIngredients(Rec);
+	assertSame(coffee, inv.getCoffee());
 }
+    
+    public void testUseNoMilk() throws RecipeException{
+		inv.useIngredients(Rec);
+	assertSame(milk, inv.getMilk());
+}
+    
+
     public void testUseAllChocolate() throws RecipeException{
 		Rec.setAmtChocolate("15");
 		assertTrue(inv.useIngredients(Rec));
-		assertSame(0, inv.getChocolate());
+		
+    }
+    
+    public void testUseAllChocolateOutcome() throws RecipeException{
+    		Rec.setAmtChocolate("15");
+    		inv.useIngredients(Rec);
+    		assertSame(0, inv.getChocolate());
     }
     
     public void testUseAllMilk() throws RecipeException{
 		Rec.setAmtMilk("15");
 		assertTrue(inv.useIngredients(Rec));
-		assertSame(0, inv.getMilk());
     }
+    
+    public void testUseAllMilkOutcome() throws RecipeException{
+		Rec.setAmtMilk("15");
+		inv.useIngredients(Rec);
+		assertSame(0, inv.getMilk());
+}
+
     
     public void testUseAllCoffee() throws RecipeException{
 		Rec.setAmtCoffee("15");
 		assertTrue(inv.useIngredients(Rec));
-		assertSame(0, inv.getCoffee());
     }
+    
+    public void testUseAllCoffeeOutcome() throws RecipeException{
+		Rec.setAmtCoffee("15");
+		inv.useIngredients(Rec);
+		assertSame(0, inv.getCoffee());
+}
+
     
     public void testUseAllSugar() throws RecipeException{
 		Rec.setAmtSugar("15");
 		assertTrue(inv.useIngredients(Rec));
-		assertSame(0, inv.getSugar());
     }
+    
+    public void testUseAllSugarOutcome() throws RecipeException{
+		Rec.setAmtSugar("15");
+		inv.useIngredients(Rec);
+		assertSame(0, inv.getSugar());
+}
+
     
     public void testUseTooMuchChocolate() throws RecipeException{
 		Rec.setAmtChocolate("16");
 		assertFalse(inv.useIngredients(Rec));
+    }
+    
+    public void testUseTooMuchChocolateOutcome() throws RecipeException{
+		Rec.setAmtChocolate("16");
+		inv.useIngredients(Rec);
 		assertSame(chocolate, inv.getChocolate());
     }
     
     public void testUseTooMuchMilk() throws RecipeException{
 		Rec.setAmtMilk("16");
 		assertFalse(inv.useIngredients(Rec));
+    }
+    
+    public void testUseTooMuchMilkOutcome() throws RecipeException{
+		Rec.setAmtMilk("16");
+		inv.useIngredients(Rec);
 		assertSame(milk, inv.getMilk());
     }
     
     public void testUseTooMuchCoffee() throws RecipeException{
 		Rec.setAmtCoffee("16");
 		assertFalse(inv.useIngredients(Rec));
+    }
+    
+    public void testUseTooMuchCoffeeOutcome() throws RecipeException{
+		Rec.setAmtCoffee("16");
+		inv.useIngredients(Rec);
 		assertSame(coffee, inv.getCoffee());
     }
     
     public void testUseTooMuchSugar() throws RecipeException{
 		Rec.setAmtSugar("16");
 		assertFalse(inv.useIngredients(Rec));
+    }
+    
+    public void testUseTooMuchSugarOutcome() throws RecipeException{
+		Rec.setAmtSugar("16");
+		inv.useIngredients(Rec);
 		assertSame(sugar, inv.getSugar());
     }
     

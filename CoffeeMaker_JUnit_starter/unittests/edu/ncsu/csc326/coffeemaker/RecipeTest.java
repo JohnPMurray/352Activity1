@@ -59,6 +59,13 @@ public class RecipeTest extends TestCase {
     	assertEquals("Price is 0 ", 0, amtChocolate);
     }
     
+    
+    public void testHashcode_002() {
+    	Rec.setName("a");
+    	Rec2.setName("a");
+    	assertTrue(Rec.hashCode() == Rec2.hashCode());
+    }
+    
     public void testsetAmtChocolateInterger() throws RecipeException{
     	Rec.setAmtChocolate("1");
     	assertEquals(Rec.getAmtChocolate(),1);
@@ -79,7 +86,14 @@ public class RecipeTest extends TestCase {
     	catch(RecipeException success) {    		
     	}
     }
-    
+    public void testsetAmtChocolateDec(){
+    	try {
+    		Rec.setAmtChocolate("1.3");
+    		fail("String must be a Positive Number");
+    	}
+    	catch(RecipeException success) {    		
+    	}
+    }
     public void testsetAmtCoffeeInterger() throws RecipeException {
     	Rec.setAmtCoffee("1");
     	assertEquals(Rec.getAmtCoffee(),1);
@@ -100,7 +114,14 @@ public class RecipeTest extends TestCase {
     	catch(RecipeException success) {    		
     	}
     }
-    
+    public void testsetAmtCoffeeDec(){
+    	try {
+    		Rec.setAmtCoffee("1.3");
+    		fail("String must be a Positive Number");
+    	}
+    	catch(RecipeException success) {    		
+    	}
+    }
     public void testsetAmtMilkInterger() throws RecipeException {
     	Rec.setAmtMilk("1");
     	assertEquals(Rec.getAmtMilk(),1);
@@ -121,7 +142,14 @@ public class RecipeTest extends TestCase {
     	catch(RecipeException success) {    		
     	}
     }
-    
+    public void testsetAmtMilkDec(){
+    	try {
+    		Rec.setAmtMilk("1.3");
+    		fail("String must be a Positive Number");
+    	}
+    	catch(RecipeException success) {    		
+    	}
+    }
     public void testsetAmtSugerInterger() throws RecipeException {
     	Rec.setAmtSugar("1");
     	assertEquals(Rec.getAmtSugar(),1);
@@ -149,11 +177,21 @@ public class RecipeTest extends TestCase {
     public void testHashcode_001() {
     	assertTrue(Rec.hashCode() == Rec2.hashCode());
     }
+
+    public void testsetAmtSugarDec(){
+    	try {
+    		Rec.setAmtSugar("1.3");
+    		fail("String must be a Positive Number");
+    	}
+    	catch(RecipeException success) {    		
+    	}
+    }
     public void testsetnameActual() {
     	name = "Bob";
     	Rec.setName("Bob");
     	assertEquals(Rec.getName(),"Bob");
-    }
+    	}   
+    
     
     public void testnameEmpty() {
     	name = "";
@@ -187,4 +225,55 @@ public class RecipeTest extends TestCase {
     	catch(RecipeException success) {    		
     	}
     }
+    public void testsetPriceDec(){
+    	try {
+    		Rec.setPrice("1.3");
+    		fail("String must be a Positive Number");
+    	}
+    	catch(RecipeException success) {    		
+    	}
+    }
+    public void testequals_001() {
+    	assertTrue(Rec.equals(Rec2));
+    }
+   
+    public void testequals_002() {
+    	Rec.setName(null);
+    	Rec2.setName("Name");
+    	assertFalse(Rec.equals(Rec2));
+   }
+  
+    public void testequals_003() {
+    	Rec.setName("Name");
+    	assertFalse(Rec.equals(Rec2));
+    }
+    
+    public void testequals_004() {
+    	assertTrue(Rec.equals(Rec));
+   }
+    public void testequals_005() {
+    	assertFalse(Rec.equals(null));
+   }
+    
+    public void testequals_006() {
+    	assertFalse(Rec.equals("text"));
+    }
+    
+    public void testequals_007() {
+    	Rec.setName("name");
+    	Rec2.setName("name");
+    	assertTrue(Rec.equals(Rec2));
+    }
+    
+    public void testequals_008() throws RecipeException {
+    	Rec.setName("name");
+    	Rec.setAmtSugar("1");
+    	Rec2.setName("name");
+    	assertTrue(Rec.equals(Rec2));
+    }
+    
+ 
+
+ 
+    
 }
