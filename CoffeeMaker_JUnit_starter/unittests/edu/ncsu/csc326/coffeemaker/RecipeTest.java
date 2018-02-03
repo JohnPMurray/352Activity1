@@ -1,18 +1,22 @@
 package edu.ncsu.csc326.coffeemaker;
 
 
+import org.junit.Assert;
+
 import edu.ncsu.csc326.coffeemaker.exceptions.RecipeException;
 import junit.framework.TestCase;
 
 public class RecipeTest extends TestCase {
 	
 	private String name;
+	private String empty;
     private int price;
     private int amtCoffee;
     private int amtMilk;
     private int amtSugar;
     private int amtChocolate;
     Recipe Rec = new Recipe();
+    Recipe Rec2 = new Recipe();
     
     protected void setUp() {
     	this.name = Rec.getName();
@@ -32,12 +36,27 @@ public class RecipeTest extends TestCase {
     	this.amtChocolate = 0;
     }
 
-    public void testintialRecipe() {
+    public void testintialRecipe_001() {
     	assertEquals("Name is a empty string ", "", name);
+    }
+    
+    public void testintialRecipe_002() {
     	assertEquals("Price is 0 ", 0, price);
+    }
+    
+    public void testintialRecipe_003() {
     	assertEquals("Price is 0 ", 0, amtCoffee);
-    	assertEquals("Price is 0 ", 0, amtMilk);
+    }
+    
+    public void testintialRecipe_004() {
     	assertEquals("Price is 0 ", 0, amtSugar);
+    }
+    
+    public void testintialRecipe_005() {
+    	assertEquals("Price is 0 ", 0, amtMilk);
+    }
+    
+    public void testintialRecipe_006() {
     	assertEquals("Price is 0 ", 0, amtChocolate);
     }
     
@@ -124,6 +143,14 @@ public class RecipeTest extends TestCase {
     	catch(RecipeException success) {    		
     	}
     }
+<<<<<<< HEAD
+    public void testtoString() {
+    	empty = "";
+    	assertEquals(Rec.toString(),empty);
+    }
+    public void testHashcode_001() {
+    	assertTrue(Rec.hashCode() == Rec2.hashCode());
+=======
     
     public void testsetnameActual() {
     	name = "Bob";
@@ -162,5 +189,6 @@ public class RecipeTest extends TestCase {
     	}
     	catch(RecipeException success) {    		
     	}
+>>>>>>> branch 'master' of https://github.com/JohnPMurray/352Activity1.git
     }
 }

@@ -10,17 +10,16 @@ public class InventoryTest extends TestCase {
     private int milk;
     private int sugar;
     private int chocolate;
-    Inventory inv;
-    Recipe Rec;
+    Inventory inv = new Inventory();
+    Recipe Rec = new Recipe();
     
     protected void setUp() {
     	Rec = new Recipe();
     	inv = new Inventory();
     	this.coffee = inv.getCoffee();
-    	this.milk = 15;
+    	this.milk = inv.getMilk();
     	this.sugar = inv.getSugar();
     	this.chocolate = inv.getChocolate();
-    	
     	
     }
 	
@@ -29,6 +28,7 @@ public class InventoryTest extends TestCase {
     	this.milk = 0;
     	this.sugar = 0;
     	this.chocolate = 0; 
+    	//inv = new Inventory();
     	Rec = null;
     	inv = null;
     }
@@ -54,40 +54,42 @@ public class InventoryTest extends TestCase {
     	inv.setChocolate(0);	
     	assertEquals("Chocolate is not 0 ", 0, inv.getChocolate());
     }
-
+    
     public void testsetChocolateNeg() {
-    	inv.setChocolate(-1);
-    	assertEquals("Chocolate is negative ", 15, inv.getChocolate());
+    	inv.setChocolate(-1);	
+    	assertEquals("Chocolate is not 15 ", 15, inv.getChocolate());
     }
+
+    
     
     public void testsetCoffeePos() {
     	inv.setCoffee(0);   	
-    	assertEquals("Coffee is not 0 ", 0, inv.getCoffee());
+    	assertEquals("Coffee is 0 ", 0, inv.getCoffee());
     }
     
     public void testsetCoffeeNeg() {
     	inv.setCoffee(-1);
-    	assertEquals("Coffee is negative ", 15, inv.getCoffee());
+    	assertEquals("Negative coffee is not added ", 15, inv.getCoffee());
     }
     
     public void testsetMilkPos() {
     	inv.setMilk(0);   	
-    	assertEquals("Milk is not 0 ", 0, inv.getMilk());
+    	assertEquals("Milk is 0 ", 0, inv.getMilk());
     }
     
     public void testsetMilkNeg() {
      	inv.setMilk(-1);
-    	assertEquals("Milk is negative ", 15, inv.getMilk());
+    	assertEquals("Negative milk is not added ", 15, inv.getMilk());
     }
     
     public void testsetSugarPos() {
     	inv.setSugar(0);   	
-    	assertEquals("Sugar is not 0 ", 0, inv.getSugar());
+    	assertEquals("Sugar is 0 ", 0, inv.getSugar());
     }
     
-    public void testsetSugar() {
+    public void testsetSugarNeg() {
     	inv.setSugar(-1);
-    	assertEquals("Sugar is negative ", 15, inv.getSugar());
+    	assertEquals("Negative sugar is not added ", 1, inv.getSugar());
     }
     
     public void testaddChocolateSymb() {
@@ -359,6 +361,7 @@ public class InventoryTest extends TestCase {
     				"Sugar: 15\n" + 
     				"Chocolate: 15\n";
     		assertEquals(strExpected, inv.toString());
+
     }
 
 }
