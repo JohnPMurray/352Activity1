@@ -1,6 +1,7 @@
 package edu.ncsu.csc326.coffeemaker;
 
 import junit.framework.TestCase;
+import static org.mockito.Mockito.*;
 
 
 public class RecipeBookTest extends TestCase {
@@ -14,16 +15,16 @@ public class RecipeBookTest extends TestCase {
 	
 	@Override
 	protected void setUp() {
-		recipe1 = new Recipe();
-		recipe2 = new Recipe();
-		recipe3 = new Recipe();
-		recipe4 = new Recipe();
-		recipe5 = new Recipe();
-		recipe1.setName("recipe1");
-		recipe2.setName("recipe2");
-		recipe3.setName("recipe3");
-		recipe4.setName("recipe4");
-		recipe5.setName("recipe5");
+		recipe1 = mock(Recipe.class);
+		recipe2 = mock(Recipe.class);
+		recipe3 = mock(Recipe.class);
+		recipe4 = mock(Recipe.class);
+		recipe5 = mock(Recipe.class);
+		when(recipe1.getName()).thenReturn("recipe1");
+		when(recipe2.getName()).thenReturn("recipe2");
+		when(recipe3.getName()).thenReturn("recipe3");
+		when(recipe4.getName()).thenReturn("recipe4");
+		when(recipe5.getName()).thenReturn("recipe5");
 		recipeBook = new RecipeBook();
 	}
 	
@@ -83,6 +84,7 @@ public class RecipeBookTest extends TestCase {
 		recipeBook.addRecipe(recipe1);
 		recipeBook.deleteRecipe(0);
 		assertNotSame(recipe1, recipeBook.getRecipes()[0]);
+		verify(recipe1).getName();
 	}
 	
 	public void testDeleteNonExistantRecipe() {
